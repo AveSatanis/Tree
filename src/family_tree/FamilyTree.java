@@ -1,12 +1,16 @@
 package family_tree;
 
+import human.ComparatorByAge;
 import human.Human;
+import human.HumanIterator;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Iterator;
 import java.util.List;
 
-public class FamilyTree implements Serializable {
+public class FamilyTree implements Serializable, Iterable<Human> {
     private long humansId;
     private List<Human> humanList;
 
@@ -23,7 +27,7 @@ public class FamilyTree implements Serializable {
         }
         if (!humanList.contains(human)){
             humanList.add(human);
-            human.setId(humansId++);
+            human.setId((int) humansId++);
 
             addToParents(human);
             addToChildren(human);
@@ -135,5 +139,18 @@ public class FamilyTree implements Serializable {
             sb.append("\n");
         }
         return sb.toString();
+    }
+
+    public void sortByName(){
+        Collections.sort(humanList, Human::compareTo);
+    }
+
+    @Override
+    public Iterator<Human> iterator() {
+        return new HumanIterator(humanList);
+    }
+
+    public void sortByAge() {
+        Collections.sort(humanList, new ComparatorByAge());
     }
 }

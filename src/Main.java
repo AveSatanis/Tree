@@ -1,6 +1,7 @@
 import family_tree.FamilyTree;
 import human.Gender;
 import human.Human;
+import human.HumanService;
 import writer.FileHandler;
 
 import java.time.LocalDate;
@@ -10,24 +11,15 @@ import java.time.LocalDate;
 public class Main {
     final static String filePath = "src/writer/tree.txt";
     public static void main(String[] args) {
-
-//        FamilyTree tree = load();
         FamilyTree tree = testTree();
-        save(tree);
+
 
         System.out.println(tree);
+        tree.sortByName();
+        System.out.println(tree);
+        tree.sortByAge();
+        System.out.println(tree);
     }
-
-    private static FamilyTree load() {
-        FileHandler fileHandler = new FileHandler(filePath);
-        return (FamilyTree) fileHandler.read();
-    }
-
-    private static void save(FamilyTree familyTree) {
-        FileHandler fileHandler = new FileHandler(filePath);
-        fileHandler.save(familyTree);
-    }
-
     private static FamilyTree testTree(){
         FamilyTree tree = new FamilyTree();
 

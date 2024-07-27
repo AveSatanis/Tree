@@ -7,13 +7,16 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Human implements Serializable {
-    private long id;
+    private int id;
     private String name;
     private Gender gender;
     private LocalDate birthDate, deathDate;
     private Human Dad, Mom;
     private List<Human> children;
     private Human spouse;
+
+    public Human() {
+    }
 
     public Human(String name, Gender gender, LocalDate birthDate, LocalDate deathDate, Human dad, Human mom) {
         id = -1;
@@ -117,9 +120,6 @@ public class Human implements Serializable {
         return id;
     }
 
-    public void setId(long id) {
-        this.id = id;
-    }
 
     public LocalDate getBirthDate() {
         return birthDate;
@@ -228,5 +228,13 @@ public class Human implements Serializable {
         }
         Human human = (Human) obj;
         return human.getId() == getId();
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+
+    public int compareTo(Human o) {
+        return name.compareTo(o.name);
     }
 }
