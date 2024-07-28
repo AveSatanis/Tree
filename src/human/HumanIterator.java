@@ -3,11 +3,11 @@ package human;
 import java.util.Iterator;
 import java.util.List;
 
-public class HumanIterator implements Iterator<Human> {
+public class HumanIterator<T> implements Iterator<T> {
     private int curIndex;
-    private List<Human> familyTree;
+    private List<T> familyTree;
 
-    public HumanIterator(List<Human> familyTree){
+    public HumanIterator(List<T> familyTree){
         this.familyTree = familyTree;
     }
 
@@ -17,7 +17,7 @@ public class HumanIterator implements Iterator<Human> {
     }
 
     @Override
-    public Human next() {
+    public T next() {
         return familyTree.get(curIndex);
     }
 }

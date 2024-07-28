@@ -10,23 +10,23 @@ import java.util.Collections;
 import java.util.Iterator;
 import java.util.List;
 
-public class FamilyTree implements Serializable, Iterable<Human> {
+public class FamilyTree<E extends FamilyTreeItem> implements Serializable, Iterable<E> {
     private long humansId;
-    private List<Human> humanList;
+    private List<E> humanList;
 
 
     public FamilyTree() {
         this(new ArrayList<>());
     }
 
-    public FamilyTree(List<Human> humanList){this.humanList = humanList;}
+    public FamilyTree(List<E> humanList){this.humanList = humanList;}
 
     public boolean add(Human human){
         if (human == null){
             return false;
         }
         if (!humanList.contains(human)){
-            humanList.add(human);
+            humanList.add((E) human);
             human.setId((int) humansId++);
 
             addToParents(human);
@@ -50,7 +50,7 @@ public class FamilyTree implements Serializable, Iterable<Human> {
     }
 
     public List<Human> getSiblings(int id){
-        Human human = getById(id);
+        Human human = (Human) getById(id);
         if (human == null){
             return null;
         }
@@ -65,9 +65,9 @@ public class FamilyTree implements Serializable, Iterable<Human> {
         return res;
     }
 
-    public List<Human> getByName(String name){
-        List<Human> res = new ArrayList<>();
-        for (Human human: humanList){
+    public List<E> getByName(String name){
+        List<E> res = new ArrayList<>();
+        for (E human: humanList){
             if (human.getName().equals(name)){
                 res.add(human);
             }
@@ -75,10 +75,10 @@ public class FamilyTree implements Serializable, Iterable<Human> {
         return res;
     }
 
-    public boolean setWedding(long humanId1, long humanId2){
+    public boolean setWedding(int humanId1, int humanId2){
         if (checkId(humanId1) && checkId(humanId2)){
-            Human human1 = getById(humanId1);
-            Human human2 = getById(humanId2);
+            Human human1 = (Human) getById(humanId1);
+            Human human2 = (Human) getById(humanId2);
             return setWedding(human1, human2);
         }
         return false;
@@ -94,10 +94,10 @@ public class FamilyTree implements Serializable, Iterable<Human> {
         }
     }
 
-    public boolean setDivorce(long humanId1, long humanId2){
+    public boolean setDivorce(int humanId1, int humanId2){
         if (checkId(humanId1) && checkId(humanId2)){
-            Human human1 = getById(humanId1);
-            Human human2 = getById(humanId2);
+            Human human1 = (Human) getById(humanId1);
+            Human human2 = (Human) getById(humanId2);
             return setDivorce(human1, human2);
         }
         return false;
@@ -117,8 +117,8 @@ public class FamilyTree implements Serializable, Iterable<Human> {
         return id < humansId && id >= 0;
     }
 
-    public Human getById(long id){
-        for (Human human: humanList){
+    public E getById(int id){
+        for (E human: humanList){
             if (human.getId() == id){
                 return human;
             }
@@ -134,7 +134,7 @@ public class FamilyTree implements Serializable, Iterable<Human> {
         sb.append("В дереве ");
         sb.append(humanList.size());
         sb.append(" объектов: \n");
-        for (Human human: humanList){
+        for (E human: humanList){
             sb.append(human);
             sb.append("\n");
         }
@@ -142,11 +142,11 @@ public class FamilyTree implements Serializable, Iterable<Human> {
     }
 
     public void sortByName(){
-        Collections.sort(humanList, Human::compareTo);
+        Collections.sort(humanList);
     }
 
     @Override
-    public Iterator<Human> iterator() {
+    public Iterator<E> iterator() {
         return new HumanIterator(humanList);
     }
 
