@@ -2,24 +2,35 @@ package family_tree;
 
 import human.Human;
 
+import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 
-public interface FamilyTreeItem<T> extends Comparable<T> {
+public interface FamilyTreeItem<T> extends Comparable<T>, Serializable {
    int getAge();
 
    String getName();
 
    void setId(int i);
 
-   List<Human> getParents();
+   List<T> getParents();
 
    List<T> getChildren();
 
-   Human getSpouse();
+   T getSpouse();
 
-   void setSpouse(T human2);
+   void setSpouse(T human);
 
    long getId();
+
+   boolean addChild(T human);
+
+   boolean addParent(T human);
+
+   T getMom();
+
+   T getDad();
+
 }
 
 

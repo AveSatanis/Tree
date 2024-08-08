@@ -8,7 +8,7 @@ import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human implements Serializable, FamilyTreeItem<Human> {
+public class Human implements FamilyTreeItem<Human> {
     private int id;
     private String name;
     private Gender gender;
