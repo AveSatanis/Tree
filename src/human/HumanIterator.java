@@ -1,9 +1,11 @@
 package human;
 
+import family_tree.FamilyTreeItem;
+
 import java.util.Iterator;
 import java.util.List;
 
-public class HumanIterator<T> implements Iterator<T> {
+public class HumanIterator<T extends FamilyTreeItem<T>> implements Iterator<T>  {
     private int curIndex;
     private List<T> familyTree;
 
