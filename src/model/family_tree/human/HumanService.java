@@ -1,6 +1,6 @@
-package human;
+package model.family_tree.human;
 
-import family_tree.FamilyTree;
+import model.family_tree.FamilyTree;
 
 public class HumanService {
     private FamilyTree familyTree;
@@ -22,5 +22,15 @@ public class HumanService {
 
     public void sortByAge(){
         familyTree.sortByAge();
+    }
+
+    public String getFamilyTreeInfo() {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append("Список людей: \n");
+        for (Object human: familyTree){
+            stringBuilder.append(human);
+            stringBuilder.append("\n");
+        }
+        return stringBuilder.toString();
     }
 }

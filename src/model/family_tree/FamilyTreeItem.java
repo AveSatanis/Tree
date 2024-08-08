@@ -1,9 +1,6 @@
-package family_tree;
-
-import human.Human;
+package model.family_tree;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.List;
 
 public interface FamilyTreeItem<T> extends Comparable<T>, Serializable {

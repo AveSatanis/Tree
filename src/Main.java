@@ -1,15 +1,13 @@
-import family_tree.FamilyTree;
-import human.Gender;
-import human.Human;
-import human.HumanService;
-import writer.FileHandler;
+import model.family_tree.FamilyTree;
+import model.family_tree.human.Gender;
+import model.family_tree.human.Human;
 
 import java.time.LocalDate;
 
 //TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
 // click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
 public class Main {
-    final static String filePath = "src/writer/tree.txt";
+    final static String filePath = "src/model.family_tree.writer/tree.txt";
     public static void main(String[] args) {
         FamilyTree tree = testTree();
 
