@@ -2,12 +2,13 @@ package model.family_tree.human;
 
 import model.family_tree.FamilyTreeItem;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
 
-public class Human implements FamilyTreeItem<Human> {
+public class Human implements FamilyTreeItem<Human>, Serializable {
     private int id;
     private String name;
     private Gender gender;

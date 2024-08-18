@@ -1,8 +1,11 @@
 package presenter;
 
+import model.family_tree.human.Gender;
 import model.family_tree.human.HumanService;
 import view.ConsoleUI;
 import view.View;
+
+import java.time.LocalDate;
 
 public class Presenter {
     private View view;
@@ -13,12 +16,9 @@ public class Presenter {
         service = new HumanService();
     }
 
-    public Presenter(ConsoleUI consoleUI) {
-    }
 
-
-    public void addHuman(String name, int age) {
-        service.addHuman(name, age);
+    public void addHuman(String name, LocalDate BirthDate, Gender gender) {
+        service.addHuman(name, BirthDate, gender);
         getFamilyTreeInfo();
     }
 

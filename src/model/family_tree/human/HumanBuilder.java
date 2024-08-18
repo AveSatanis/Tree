@@ -6,33 +6,22 @@ import java.time.Period;
 public class HumanBuilder {
     private int genId;
     private Human human;
-    private String humanName;
-    private LocalDate birthDate, deathDate;
-    private int humanAge;
+    private String name;
+    private LocalDate BirthDate;
+    private Gender gender;
 
-
-    public int getAge(){
-        if (deathDate == null){
-            return getPeriod(birthDate, LocalDate.now());
-        }
-        else {
-            return getPeriod(birthDate, deathDate);
-        }
-    }
-
-    private int getPeriod(LocalDate birthDate, LocalDate deathDate){
-        Period diff = Period.between(birthDate, deathDate);
-        return diff.getYears();
-    }
-
-
-    public HumanBuilder setHumanName(String humanName ){
-        this.humanName = humanName;
+    public HumanBuilder setHumanName(String name){
+        this.name = name;
         return this;
     }
 
-    public HumanBuilder setHumanAge(int humanAge){
-        this.humanAge = humanAge;
+    public HumanBuilder setBirthDate(LocalDate BirthDate){
+        this.BirthDate = BirthDate;
+        return this;
+    }
+
+    public HumanBuilder setGender(Gender gender){
+        this.gender = gender;
         return this;
     }
 
@@ -45,21 +34,23 @@ public class HumanBuilder {
     }
 
     public void createName(){
-        human.setName(humanName);
+        human.setName(name);
     }
 
-    public void createAge(){
-        human.getAge();
+    public void createBirthDate(){
+        human.setBirthDate(BirthDate);
     }
 
-    public int getHumanAge() {
-        return humanAge;
+    public void createGender(){
+        human.setGender(gender);
     }
+
 
     public Human build(){
         createHuman();
         createName();
-        createAge();
+        createGender();
+        createBirthDate();
         nextId();
         return human;
     }

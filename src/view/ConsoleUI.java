@@ -1,7 +1,10 @@
 package view;
 
+import model.family_tree.human.Gender;
 import presenter.Presenter;
 
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.Scanner;
 
 public class ConsoleUI implements View{
@@ -48,11 +51,14 @@ public class ConsoleUI implements View{
     public void addHuman() {
         System.out.println("Введите имя человека");
         String name = scanner.nextLine();
-        System.out.println("Введите возраст человека");
-        String strAge = scanner.nextLine();
-        int age = Integer.parseInt(strAge);
-
-        presenter.addHuman(name, age);
+        System.out.println("Введите дату рождения человека");
+        String BirthDate = scanner.nextLine();
+        LocalDate birthDate = LocalDate.now();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd LLLL yyyy");
+        String formattedString = birthDate.format(formatter);
+        System.out.println("Введите пол человека");
+        Gender gender = Gender.valueOf(scanner.nextLine());
+        presenter.addHuman(name, birthDate, gender);
     }
 
     public void error(){

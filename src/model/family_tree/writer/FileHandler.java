@@ -5,7 +5,7 @@ import java.io.*;
 public class FileHandler implements Writer {
     private String filePath;
 
-    public FileHandler(String filePath) {
+    public FileHandler() {
         this.filePath = filePath;
     }
 
@@ -30,6 +30,11 @@ public class FileHandler implements Writer {
             e.printStackTrace();
             return null;
         }
+    }
+
+    @Override
+    public void setPath(String filePath) {
+        this.filePath = filePath;
     }
 
 
