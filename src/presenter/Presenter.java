@@ -1,8 +1,8 @@
 package presenter;
 
+import model.family_tree.FamilyTree;
 import model.family_tree.human.Gender;
-import model.family_tree.human.HumanService;
-import view.ConsoleUI;
+import model.family_tree.human.service.HumanService;
 import view.View;
 
 import java.time.LocalDate;
@@ -35,5 +35,13 @@ public class Presenter {
     public void getFamilyTreeInfo() {
         String answer = service.getFamilyTreeInfo();
         view.printAnswer(answer);
+    }
+
+    public void save(FamilyTree familyTree){
+        service.save(familyTree);
+    }
+
+    public void load(){
+        service.load();
     }
 }

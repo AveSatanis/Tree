@@ -1,7 +1,7 @@
 package model.family_tree;
 
-import model.family_tree.human.ComparatorByAge;
-import model.family_tree.human.HumanIterator;
+import model.family_tree.human.comparator.ComparatorByAge;
+import model.family_tree.human.iterator.HumanIterator;
 
 import java.io.Serializable;
 import java.util.ArrayList;

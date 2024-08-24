@@ -1,7 +1,9 @@
-package model.family_tree.human;
+package model.family_tree.human.service;
+
+import model.family_tree.human.Gender;
+import model.family_tree.human.Human;
 
 import java.time.LocalDate;
-import java.time.Period;
 
 public class HumanBuilder {
     private int genId;

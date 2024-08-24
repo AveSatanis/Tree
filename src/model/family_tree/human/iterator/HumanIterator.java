@@ -1,4 +1,4 @@
-package model.family_tree.human;
+package model.family_tree.human.iterator;
 
 import model.family_tree.FamilyTreeItem;
 

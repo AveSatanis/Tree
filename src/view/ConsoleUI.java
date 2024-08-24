@@ -1,7 +1,10 @@
 package view;
 
+import model.family_tree.FamilyTree;
 import model.family_tree.human.Gender;
 import presenter.Presenter;
+import view.Commands.LoadTree;
+import view.Commands.SaveTree;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
@@ -46,6 +49,14 @@ public class ConsoleUI implements View{
 
     public void sortByName() {
         presenter.sortByName();
+    }
+
+    public void save(FamilyTree familyTree){
+        presenter.save(familyTree);
+    }
+
+    public void load(){
+        presenter.load();
     }
 
     public void addHuman() {

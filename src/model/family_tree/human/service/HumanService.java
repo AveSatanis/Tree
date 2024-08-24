@@ -1,17 +1,20 @@
-package model.family_tree.human;
+package model.family_tree.human.service;
 
 import model.family_tree.FamilyTree;
+import model.family_tree.human.Gender;
+import model.family_tree.human.Human;
 import model.family_tree.writer.FileHandler;
 
 import java.time.LocalDate;
+import java.util.List;
 
 public class HumanService {
-    private FamilyTree familyTree;
+    private FamilyTree<Human> familyTree;
     private HumanBuilder builder;
     final static String filePath = "scr/model.family_tree/writer/tree.txt";
 
     public HumanService(){
-        familyTree = new FamilyTree();
+        familyTree = new FamilyTree<Human>();
         builder = new HumanBuilder();
     }
 
@@ -38,7 +41,7 @@ public class HumanService {
         return stringBuilder.toString();
     }
 
-    public void save(FamilyTree familyTree){
+    public void save(FamilyTree<Human> familyTree){
         FileHandler fileHandler = new FileHandler();
         fileHandler.setPath(filePath);
         fileHandler.save(familyTree);
@@ -48,5 +51,13 @@ public class HumanService {
         FileHandler fileHandler = new FileHandler();
         fileHandler.setPath(filePath);
         fileHandler.read();
+    }
+
+    public boolean add(FamilyTree<Human> familyTree){
+        return familyTree.add(new Human());
+    }
+
+    public List<Human> getSiblings(FamilyTree<Human> familyTree){
+        return familyTree.getSiblings(new Human().getId());
     }
 }

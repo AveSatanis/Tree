@@ -118,7 +118,7 @@ public class Human implements FamilyTreeItem<Human>, Serializable {
         return name;
     }
 
-    public long getId() {
+    public int getId() {
         return id;
     }
 
